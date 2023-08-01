@@ -33,8 +33,10 @@
 	\rule{\linewidth}{1mm} \\[1cm]
 
 		\begin{tabular}{l p{5cm}}
-		\textbf{Team Member Names:} Vivi Banh (Proposal, Final Report, and Model Evaluation) \\ \& Chukwuemeka Okoli (Proposal, Final Report, and Model Development) \\[10pt]
-		\textbf{Project Title:} Deep Neural Network for Shoe Model Identification  \\[10pt]
+		\centering
+		\textbf{Team Member Names:} \\Vivi Banh (Proposal, Final Report, and Model Evaluation) \& Chukwuemeka Okoli (Proposal, Final Report, and Model Development) \\[10pt]
+		\centering
+		\textbf{Project Title:} \\Deep Neural Network for Shoe Model Identification  \\[10pt]
 		%\textbf{Please include (at least) the following sections.} & \\
 		\end{tabular} 
 
@@ -46,7 +48,7 @@
 In today's fashion-forward society, social media plays a pivotal role in shaping consumer habits and driving trends. As people browse through fashion photos online, they seek convenient ways to identify and purchase the products showcased in those images. However, traditional methods of searching for unknown products on search engines can be frustrating and time-consuming.  \\
 
 \noindent
-Our project aims to develop an image classification system for shoe classes worn by models in photos. The system will accurately identify the class of shoes in images and provide users with the corresponding class information. This will streamline the shopping experience, making it easier for consumers to find and purchase specific shoe models they are interested in.\\
+To address this challenge, our project aims to develop an advanced image classification system specifically designed for identifying shoe classes worn by models in fashion images. Our system will provide users with the specific shoe classes they are interested in accurately recognizing the shoe from an image. If implemented in a production environment with specific business use cases, this streamlined approach can significantly enhance the shopping experience, allowing consumers to easily find and purchase their desired shoe models.\\
 
 \noindent
 Integrating our image classification system into popular platforms like Instagram or a web application can bring significant benefits to retailers and e-commerce platforms. By seamlessly incorporating a product identification feature, businesses can captivate potential buyers, enhance customer engagement, and drive conversions. This transformative capability bridges the gap between inspiration and purchase, transforming social media platforms into highly effective sales channels. The integration of our image classification system can create new opportunities for both retailers and consumers, maximizing sales potential and delivering an exceptional shopping experience. 
@@ -66,14 +68,20 @@ The neural network is organized in layers meaning we take an image of a shoe, pa
  \begin{figure}[h!]
 \centering
   \includegraphics[width=0.75\linewidth]{neural network.png}
-  \caption{Structure of a neural network}
+  \caption{Structure of a Neural Network}
   \label{neural_network}
 \end{figure}
 
 \subsection{Model Development}
-The CNN model is used to train labeled shoe images as input and their corresponding shoe model names as target labels. The model learnt to recognize the visual patterns associated with each shoe model during the training process.  To develop the model, we used \emph{Conv2D} as input layer with the first convolutional block followed by a \emph{MaxPooling2D} layer. The MaxPooling2D layer reduces the spatial dimensions of the output by performing max-pooling operation. The second convolutional block is similar to the first one, with 64 filters and a kernel size of 3x3. Again, a MaxPooling2D layer follows the Conv2D layer to reduce spatial dimensions. The third convolutional block is similar to the previous ones, with 128 filters and a kernel size of 3x3. Another MaxPooling2D layer follows the Conv2D layer. After the last MaxPooling2D layer, a Flatten layer is used to convert the 2D feature maps into a 1D vector, which is then fed into the fully connected layers. A Dense layer with 740 units and ReLU activation function is used. Finally, there is another Dense layer with 20 units and a softmax activation function.  
+The Convolutional Neural Network (CNN) model is designed to process labeled shoe images as input and predict their corresponding shoe model names as target labels. The model's architecture is structured to capture the visual patterns and features associated with each shoe model during the training process.
 
-This is the output layer, and it represents the probability distribution over the 20 classes in the classification task. The chosen optimizer is ``adam," which is a popular adaptive learning rate optimization algorithm. The loss function used is ``categorical\_crossentropy," which is appropriate for multi-class classification problems with one-hot encoded labels. The model is evaluated based on the "accuracy" metric during training and testing. A schematic of the convolutional neural network developed is shown in \textbf{Fig. \ref{schema}}.
+The model starts with an input layer, utilizing the \emph{Conv2D} layer with the first convolutional block. The first block consists of 32 filters with a kernel size of 5x5, and a \emph{ReLU} activation function is applied to introduce non-linearity. This is followed by a \emph{MaxPooling2D} layer, which performs max-pooling to reduce the spatial dimensions of the output. The second convolutional block is similar to the first, but now with 64 filters and a smaller kernel size of 3x3. After this block, another \emph{MaxPooling2D} layer is applied to further reduce spatial dimensions. The third convolutional block follows a similar pattern, with 128 filters and a kernel size of 3x3. Once again, a \emph{MaxPooling2D} layer is added to reduce the spatial dimensions. After the last \emph{MaxPooling2D} layer, a \emph{Flatten} layer is used to convert the 2D feature maps into a 1D vector. This flattened vector is then passed through the fully connected layers. A \emph{Dense} layer with 740 units and a \emph{ReLU} activation function is used to introduce non-linearity in the fully connected layers. The final layer, called the output layer, consists of another \emph{Dense} layer with 20 units, representing the 20 classes in the classification task. The \emph{softmax} activation function is applied to the output layer, which provides a probability distribution over the classes.
+
+The optimizer chosen for training the model is "adam," which is a widely used adaptive learning rate optimization algorithm. It adapts the learning rate during training based on the past gradients, making it an efficient and effective optimizer.
+For the loss function, we selected "categorical\_crossentropy," as it is suitable for multi-class classification problems with one-hot encoded labels. It measures the difference between the predicted probability distribution and the true one-hot encoded labels.
+During training and testing, the model's performance is evaluated based on the accuracy metric, which calculates the percentage of correct predictions out of the total predictions made by the model since accuracy provides a clear and intuitive understanding of how well our model is performing on the task of classifying shoe images into different categories.
+
+A schematic of the convolutional neural network architecture is depicted in \textbf{Fig. \ref{schema}}, providing an overview of the layers and their connections within the model.
 
  \begin{figure}[h!]
  \centering
@@ -83,22 +91,24 @@ This is the output layer, and it represents the probability distribution over th
 \end{figure}
 
 \noindent
-In the Adam optimization algorithm, we specify the learning rate, which determines how fast our network learns. We set a reasonable value of $0.01$ since if we set it too high, the network learns too fast and skip some details. If it is too low, then the model training time increases significantly.We define the loss function as ``CategoricalCrossentropy'' which is usually used to train a classification model with multiple classes. We chose accuracy as our metric since we want to determine the percentage of correct classification that the model achieves. We specify the \emph{epoch} which is the number of times the model run through the training data. We set a value of $10$ since using more epoch means the model learns the training data better. We don't want the value to be too high or the model starts to overfit the training data. 
+In the Adam optimization algorithm, we seek to strike a balance between fast convergence and avoiding overshooting the optimal solution. The learning rate, denoted by $\alpha$, plays a crucial role in determining the step size taken during each update of the model's parameters. If $\alpha$ is too high, the algorithm might overshoot the optimal solution, leading to oscillations and instability in learning. On the other hand, if $\alpha$ is too low, the training process might become slow, requiring more iterations to reach convergence.
+
+In our CNN model, we set a reasonable learning rate of $0.01$, as it has been found to be effective in many cases. However, the optimal learning rate can vary depending on the specific problem and model architecture. In practice, hyperparameter tuning techniques, such as learning rate scheduling and grid search, can be employed to find the best learning rate for a given task.
+
+The loss function we use is the ``Categorical Cross Entropy'', which is well-suited for training a classification model with multiple classes. The Categorical Cross Entropy loss measures the dissimilarity between the predicted probabilities and the true one-hot encoded labels. By minimizing this loss, the model is encouraged to assign high probabilities to the correct class and low probabilities to the incorrect ones.
+
+The concept of epochs is a fundamental aspect of the training process in machine learning. An epoch represents one complete iteration over the entire training dataset during the model training process. In our CNN model, we set the number of epochs to $10$. Each epoch takes approximately 10 minutes to run, making the overall training time reasonable. Selecting the right number of epochs is a crucial consideration. If we use too few epochs, the model may not have sufficient opportunities to learn and capture the underlying patterns in the training data, leading to underfitting. On the other hand, using too many epochs may result in overfitting, where the model becomes overly specialized to the training data and performs poorly on new, unseen data. Due to the long runtime required for each epoch, we did not explore increasing the number of epochs further. We also monitor the model's performance on a separate validation dataset and use a technique called early stopping to stop training once the model's performance on the validation data plateaus or starts to degrade, preventing overfitting and saving computational time. 
 
 \section{Evaluation and Final Results} 
-The plot of the loss and accuracy on the dataset is shown in Figure \ref{cnn_loss}. As observed, there is a notable difference between the training accuracy and validation accuracy, indicating the presence of overfitting. The model achieved a high training accuracy of 98.84\% but a lower validation accuracy of 82.84%.
+The plot of the loss and accuracy on the dataset is shown in Figure \ref{cnn_loss}. As observed, there is a notable difference between the training accuracy and validation accuracy, indicating the presence of overfitting. The model achieved a high training accuracy of 98.84\% but a lower validation accuracy of 82.84\%. To address the issue of overfitting and improve the model's overall performance, we apply two techniques: data augmentation and dropout.
 
-To address the issue of overfitting and improve the model's overall performance, we applied two techniques: data augmentation and dropout.
-
-1. Data Augmentation:
+\emph{1. Data Augmentation:}
    Data augmentation is a technique that involves generating additional training data by applying various transformations to the existing images. These transformations include flipping, rotation, shifting, and zooming. By augmenting the dataset with these variations, we introduce more diversity and variations to the training data, which helps the model generalize better to unseen images.
 
-2. Dropout:
+\emph{2. Dropout:}
    Dropout is a regularization technique that aims to reduce overfitting by randomly setting a fraction of the output units (neurons) to zero during training. This means that during each training iteration, a certain percentage of neurons are "dropped out" or deactivated, forcing the model to learn redundant representations and preventing complex co-adaptations between neurons. Dropout acts as a form of ensemble learning, as it trains multiple sub-networks with different combinations of neurons active and then averages their predictions during inference.
 
-By adding data augmentation and dropout to the model, we observed a reduction in overfitting, and the gap between the training and validation accuracies was narrowed. The dropout value used in the model was set to 0.2, meaning 20\% of the output units from the layer were randomly dropped out during training.
-
-The schematic of the Convolutional Neural Network with dropout is depicted in Figure \ref{dropout_schema}. This updated model with data augmentation and dropout shows improved generalization capabilities and better performance on unseen data.
+\noindent The dropout value used in the model was set to 0.2, meaning 20\% of the output units from the layer were randomly dropped out during training. The schematic of the Convolutional Neural Network with dropout is depicted in Figure \ref{dropout_schema}. This updated model with data augmentation and dropout shows improved generalization capabilities and better performance on unseen data.
 
 \begin{figure}[htbp]
   \centering
@@ -117,14 +127,14 @@ The schematic of the Convolutional Neural Network with dropout is depicted in Fi
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{training_valid_plot.png}
-  \caption{The plot of loss and accuracy on train dataset}
+  \caption{The Plot of Loss and Accuracy on Training Dataset}
   \label{cnn_loss}
 \end{figure}
 
  \begin{figure}[h!]
  \centering
   \includegraphics[width=0.85\linewidth]{dropout_schema.png}
-  \caption{A schematic of the convolutional neural network with dropout}
+  \caption{A Schematic of the Convolutional Neural Network with Dropout}
   \label{dropout_schema}
 \end{figure}
 
@@ -132,19 +142,24 @@ The schematic of the Convolutional Neural Network with dropout is depicted in Fi
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{dropout_training_plot.png}
-  \caption{The plot of loss and accuracy on train dataset with dropout}
+  \caption{The Plot of Loss and Accuracy on Training Dataset with Dropout}
   \label{dropout_training}
 \end{figure}
 \FloatBarrier
+
+The plot of loss and accuracy on the training dataset with dropout is depicted in Figure \ref{dropout_training}. After training the model with dropout, we proceeded to make predictions on the test dataset to evaluate its performance. Before removing dropout, the model achieved an accuracy of 81.59\% on the test dataset. However, after removing 20\% dropout, the model's accuracy did not show any significant increase, reaching 98.68\%. On the other hand, the validation accuracy increased to 83.37\%, indicating that adding dropout did not lead to a noticeable improvement in model prediction.
+
+One possible reason for not observing a significant improvement is that the original model already had a robust performance, and the dropout regularization might not have contributed significantly to its generalization. Additionally, with a large dataset and effective data augmentation techniques, the model might have been less prone to overfitting, making the impact of dropout less prominent.
+
+Both models, with and without dropout, show the expected behavior during training: as the number of epochs increases, the loss decreases, and accuracy increases. This behavior is typical in the learning process of neural networks.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 \begin{table}[h!]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccccccccc} \hline
-\begin{tabular}{lcccccccccc} \hline
 Model Before Dropout
+\begin{tabular}{lcccccccccc} \hline
 Epoch               & 1      & 2      & 3      & 4      & 5      & 6      & 7      & 8      & 9      & 10     \\
 Loss                & 0.8665 & 0.4879 & 0.3227 & 0.1810 & 0.0996 & 0.0690 & 0.0539 & 0.0450 & 0.0374 & 0.0371 \\
 Train accuracy      & 0.7307 & 0.8340 & 0.8870 & 0.9352 & 0.9640 & 0.9768 & 0.9811 & 0.9858 & 0.9882 & 0.9884 \\
@@ -155,23 +170,13 @@ Validation accuracy & 0.7995 & 0.8254 & 0.8298 & 0.8240 & 0.8125 & 0.8246 & 0.82
 \label{tab:train_loss}
 \end{table}
 
-The plot of loss and accuracy on the training dataset with dropout is depicted in Figure \ref{dropout_training}. After training the model with dropout, we proceeded to make predictions on the test dataset to evaluate its performance. We used accuracy as the metric to assess how well the model performed.
-
-Before removing dropout, the model achieved an accuracy of 81.59\% on the test dataset. However, after removing 20\% dropout, the model's accuracy did not show any significant increase, reaching 98.68\%. On the other hand, the validation accuracy increased to 83.37\%, indicating that adding dropout did not lead to a noticeable improvement in model prediction.
-
-One possible reason for not observing a significant improvement is that the original model already had a robust performance, and the dropout regularization might not have contributed significantly to its generalization. Additionally, with a large dataset and effective data augmentation techniques, the model might have been less prone to overfitting, making the impact of dropout less prominent.
-
-Both models, with and without dropout, show the expected behavior during training: as the number of epochs increases, the loss decreases, and accuracy increases. This behavior is typical in the learning process of neural networks.
-
-In conclusion, while dropout is a powerful regularization technique to control overfitting, its impact on the already well-performing model might not be as pronounced. The model's high accuracy on the test dataset indicates its effectiveness in correctly classifying shoe images. Adding dropout in this case might not have been essential to further improve the model's predictive performance.
-
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 \begin{table}[h!]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccccccccc} \hline
 Model After Dropout
+\begin{tabular}{lcccccccccc} \hline
 Epoch               & 1      & 2      & 3      & 4      & 5      & 6      & 7      & 8      & 9      & 10     \\
 Loss                & 0.8791 & 0.4889 & 0.3172 & 0.1843 & 0.1099 & 0.0819 & 0.0676 & 0.0611 & 0.0435 & 0.0421 \\
 Train accuracy      & 0.7305 & 0.8344 & 0.8891 & 0.9339 & 0.9598 & 0.9706 & 0.9767 & 0.9803 & 0.9860 & 0.9868 \\
@@ -182,19 +187,62 @@ Validation accuracy & 0.8035 & 0.8278 & 0.8366 & 0.8342 & 0.8395 & 0.8321 & 0.83
 \label{tab:dropout_train_loss}
 \end{table}
 
-Using the trained model, we tested the model on the test dataset and perform inference on a sample of images.nThe prediction on the test set gave an accuracy of 82.7\%. The final model developed was a well-trained model capable of accurately identifying shoe worn from shoe image. 
+To further re-fine the model, we increased the number of dense layers of the CNN model with two additional layers: one with 512 units and one with 256 units. Looking at Table 3, the loss is already lower in the refined model with only one epoch versus the previous two models. The training accuracy is also already higher with only one epoch at 98.93\% in the refined model versus the 73\% of the previous two models. However, the validation accuracy seems to hover around 83\%. This in addition to the accuracy of 99.4\% caused the algorithm to stop at the eigth epoch.
 
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+Refined Model with Additional Layers
+\begin{tabular}{lcccccccccc} \hline
+\textbf{Epoch}               & \textbf{1}      & \textbf{2}      & \textbf{3}      & \textbf{4}      & \textbf{5}      & \textbf{6}      & \textbf{7}      & \textbf{8} \\
+\textbf{Loss}                & 0.0352 & 0.0278 & 0.0315 & 0.0264 & 0.0197 & 0.0303 & 0.0220 & 0.0216\\
+\textbf{Train accuracy}      & 0.9893 & 0.9925 & 0.9910 & 0.9928 & 0.9941 & 0.9912 & 0.9934 & 0.9940\\
+\textbf{Validation accuracy} & 0.8289 & 0.8300 & 0.8329 & 0.8350 & 0.8289 & 0.8234 & 0.8306 & 0.8314\\ \hline
+\end{tabular}%
+}
+\caption{Result of Model Training and Validation Accuracy After Additional Layers with Epochs}
+\label{tab:refined_train_loss}
+\end{table}
 
-The success of the project will be determined by the model's ability to achieve a high level of accuracy in identifying the correct shoe models from the images, providing a solid foundation for further advancements in image classification and consumer-driven shopping experiences. 
+In addition to training the model on the labeled dataset, we conducted further testing to evaluate its accuracy and performance on unseen data. To assess its real-world applicability, we collected a set of ten diverse shoe images from the internet, featuring models wearing different types of shoes like heels, sandals, boots, sneakers, and more. We used these images to test the model's ability to accurately identify the shoe classes from these new and unseen examples where the background is not white and the shoes were worn in various poses.
 
+Furthermore, we evaluated the model's performance on the designated test dataset, which was separate from the training data. During this evaluation, the model underwent inference on the test dataset, and the results were promising. The accuracy achieved on the test set was an impressive 82.7\%, indicating the model's capability to generalize well to new and diverse shoe images.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+Testing Images
+\begin{tabular}{lcccccccccc} \hline
+\textbf{Test Shoe Class} & \textbf{Predicted Probability} 
+Flats
+Ankle Boots                & 0.0352 \\
+High Boots      & 0.9893\\
+Low-Top Sneakers 1
+Low-Top Sneakers 2
+High-Top Sneakers & 0.8289 \\ \hline
+\end{tabular}%
+}
+\caption{Result of Model Training and Validation Accuracy After Additional Layers with Epochs}
+\label{tab:refined_train_loss}
+\end{table}
 
 \section{Conclusion}
-For future enhancements, the trained model can be deployed as a user-facing application to enable a user-friendly experience. Consumers will be able to upload images and receive the corresponding shoe model names as the output. This application will streamline the process of identifying and purchasing specific shoe models, enhancing the shopping experience for consumers. One thing we didn't try out was to compare the performance of our trained model with other pre-trained model like ResNet50 and Fastai models.
+In conclusion, our Convolutional Neural Network (CNN) model has demonstrated impressive accuracy in correctly identifying shoe classes from images, laying a strong foundation for future advancements in image classification that can significantly enhance consumer-driven shopping experiences. The success of CNN models in image classification makes them a versatile and powerful tool for various applications.
+
+
+\noindent While our model achieved high accuracy, we acknowledge that further improvements would involve comparing its performance with other well-known pre-trained models like ResNet50 and Fastai. Additionally, more sophisticated optimization algorithms, learning rate schedulers, and regularization techniques can be employed to fine-tune the model's training process and achieve better performance. Such a comparison can provide valuable insights into the strengths and weaknesses of different approaches to image classification.
+
+\noindent Looking ahead, we envision deploying the trained model as a user-facing application to deliver a seamless and user-friendly shopping experience. By allowing consumers to upload images and receive the corresponding shoe model names as output, this application can drastically simplify the process of identifying and purchasing specific shoe models, elevating customer satisfaction and engagement. The potential of integrating our image classification system into popular platforms, such as Instagram or a web application, holds tremendous benefits for retailers and e-commerce platforms. By incorporating this product identification feature, businesses can captivate potential buyers, drive conversions, and maximize sales potential. This transformative capability effectively bridges the gap between inspiration and purchase, transforming social media platforms into powerful sales channels.
 
 \pagebreak
 \section{References} 
 		\begin{enumerate}
-		\item Albawi, S., Mohammed, T. A., \& Al-Zawi, S. (2017). Understanding of a Convolutional Neural Network. 2017 International Conference on Engineering and Technology (ICET), 1–6. https://doi.org/10.1109/icengtechnol.2017.8308186  
+		\item Albawi, S., Mohammed, T. A., \& Al-Zawi, S. (2017). Understanding of a Convolutional Neural Network. 2017 International Conference on Engineering and Technology (ICET), 1–6. https://doi.org/10.1109/icengtechnol.2017.8308186
+		
 		\item Sharma, N., Jain, V., \& Mishra, A. (2018). An Analysis Of Convolutional Neural Networks For Image Classification. Procedia Computer Science, 132, 377–384. https://doi.org/10.1016/j.procs.2018.05.198
 		\item Yu, A., \& Grauman, K. (2014). Fine-Grained Visual Comparisons with Local Learning. Computer Vision and Pattern Recognition. https://doi.org/10.1109/cvpr.2014.32 
 		\end{enumerate}
