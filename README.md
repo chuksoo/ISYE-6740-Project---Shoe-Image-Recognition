@@ -39,9 +39,9 @@ We will utilize a Convolutional Neural Network (CNN) model, a deep learning arch
 
  + Model architecture: A CNN model will be designed, consisting of convolutional layers, pooling layers, and fully connected layers. The architecture will be tailored to capture the distinctive visual features of Nike shoe models. Techniques such as dropout and batch normalization may be incorporated to improve the model's generalization and prevent overfitting. 
 
- + Model training: The designed CNN model will be trained using the labeled shoe images as input and their corresponding shoe model names as target labels. The model will learn to recognize the visual patterns associated with each shoe model during the training process. Training will utilize optimization algorithms such as stochastic gradient descent (SGD). 
+ + Model training: The designed CNN model will be trained using the labeled shoe images as input and their corresponding shoe model names as target labels. The model will learn to recognize the visual patterns associated with each shoe model during the training process. Training will utilize optimization algorithms such as Adam algorithm.
 
- + Model evaluation: The trained CNN model will be evaluated using a separate set of test images containing models wearing various Nike shoes. The accuracy of the model in correctly identifying the shoe models will be measured using evaluation metrics such as categorical cross-entropy loss, accuracy, precision, recall, and F1 score. 
+ + Model evaluation: The trained CNN model will be evaluated using a separate set of test images containing models wearing various Nike shoes. The accuracy of the model in correctly identifying the shoe models will be measured using evaluation metrics such as categorical cross-entropy loss and accuracy. 
 
  + Fine-tuning: If necessary, the model will be fine-tuned by adjusting hyperparameters such as learning rate, batch size, or the number of layers to improve its accuracy and optimize its performance. 
 
@@ -51,7 +51,7 @@ We will utilize a Convolutional Neural Network (CNN) model, a deep learning arch
 
 **Evaluation and Final Results**
 
-The accuracy of the model will be evaluated by comparing its predictions for identifying shoe models with the true labels of the test images using evaluation metrics such as categorical cross-entropy, accuracy, precision, recall, and F1 score. 
+The accuracy of the model will be evaluated by comparing its predictions for identifying shoe models with the true labels of the test images using evaluation metrics such as categorical cross-entropy, and accuracy. 
 
 The final result will consist of a trained model capable of accurately identifying Nike shoe models worn by models in photos. The success of the project will be determined by the model's ability to achieve a high level of accuracy in identifying the correct shoe models. The model can be deployed as a user-facing application, allowing consumers to upload images and receive the corresponding shoe model names as output. 
 
