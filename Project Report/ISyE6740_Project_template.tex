@@ -33,11 +33,7 @@
 	\rule{\linewidth}{1mm} \\[1cm]
 
 		\begin{tabular}{l p{5cm}}
-<<<<<<< HEAD
-		\textbf{Team Member Names:} Vivi Banh (Proposal, Final Report, and Model Evaluation) \& Chukwuemeka Okoli (Proposal, Final Report, and Model Development) \\[10pt]
-=======
 		\textbf{Team Member Names:} Vivi Banh (Proposal, Final Report, and Model Evaluation) \\ \& Chukwuemeka Okoli (Proposal, Final Report, and Model Development) \\[10pt]
->>>>>>> 937fca7 (Updated code and report with new information)
 		\textbf{Project Title:} Deep Neural Network for Shoe Model Identification  \\[10pt]
 		%\textbf{Please include (at least) the following sections.} & \\
 		\end{tabular} 
@@ -59,12 +55,8 @@ Integrating our image classification system into popular platforms like Instagra
 The data utilized for this project is the UT Zappos50K Shoe Dataset (ver 1.2), curated by Yu and Grauman (2014) and available on Kaggle.com. This comprehensive shoe dataset comprises 50,025 catalog images obtained from Zappos.com. The images have dimensions of 136 x 102 pixels, showcasing shoes centered on a white background and consistently oriented for ease of analysis. The dataset encompasses various shoe models. The classes to predict include 20 different class of shoes.  We trained a neural network and evaluate the performance of our trained model.  
 		
 \section{Methodology} 
-<<<<<<< HEAD
-Our problem is a classification problem since we are trying to determine the category of shoe or class of shoe from an image of several shoes from different brand names. We utilize a Convolutional Neural Network (CNN) model, a deep learning architecture well-suited for image classification tasks. The CNN model will be trained using the labeled shoe images to learn the distinctive features of each shoe model. We build a custom Convolutional Neural Network (CNN) architecture with three convolutional blocks, followed by a classifier head with two dense layers. The model uses the Keras Sequential API to create the architecture.
-=======
 Our problem is a classification problem since we are trying to determine the category of shoe or class of shoe from an image. of several shoes from different brand names. We utilize a Convolutional Neural Network (CNN) model, a deep learning architecture well-suited for image classification tasks. The CNN model will be trained using the labeled shoe images to learn the distinctive features of each shoe model. We build a custom Convolutional Neural Network (CNN) architecture with three convolutional blocks, followed by a classifier head with two dense layers. The model uses the Keras Sequential API to create the architecture.
 
->>>>>>> 937fca7 (Updated code and report with new information)
 \subsection{Data Preprocessing}
 The preprocessing steps we applied including resizing and normalization, to ensure they are in a suitable format for training. Data augmentation techniques such as vertical and horizontal reflections, rotation up to 90 degrees, and vertical and horizontal shifting of the images up to 20\% of their original size will be applied to enhance the model's ability to generalize.  To preprocess the image, we used the MobileNet V2 preprocessing function from Keras API.  To load the images from disk in small batches of size 32, we used an ``ImageDataGenerator``.  We resized the images and used a small images of size 224 * 224. We have 20 classes namely ``Ankle Boots'', ``Knee High Boots'', ``Over the Knee Boots'', ``Prewalker Boots'', ``Mid-Calf Boots'', ``Athletic Sandals'', ``Flat Sandals'', ``Heel Sandals'', ``Boat Shoes'', ``Flats Shoes'', ``Oxfords Shoes'', ``Clogs and Mules Shoes'',  ``Firstwalker Shoes'', ``Sneakers and Athletic Shoes'', ``Heels Shoes'', ``Prewalker Shoes'', ``Crib Shoes'', ``Loafers Shoes'', ``Slipper Heels Slippers'', ``Slipper Flats Slippers'', ``Boot Slippers''. The generator used the folder structure where the images were stored to infer the labels for the images. We split the data into training, validation and testing sets with 70\% of the data for training the model, 15\% for validating the datasetand selecting the best parameters, and 15\% for testing the model. 
 
@@ -111,9 +103,6 @@ The plot of the loss and accuracy on the dataset is shown in \textbf{Fig. \ref{c
 \end{figure}
 
 
-<<<<<<< HEAD
-For future enhancements, the trained model can be deployed as a user-facing application to enable a user-friendly experience. Consumers will be able to upload images and receive the corresponding shoe model names as the output. This application will streamline the process of identifying and purchasing types of shoes, enhancing the shopping experience for consumers. 
-=======
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{dropout_training_plot.png}
@@ -159,7 +148,6 @@ Validation accuracy & 0.8035 & 0.8278 & 0.8366 & 0.8342 & 0.8395 & 0.8321 & 0.83
 Using the trained model, we tested the model on the test dataset and perform inference on a sample of images.  The prediction on the test set gave an accuracy of 82.7\%.  The final model developed was a well-trained model capable of accurately identifying shoe worn from shoe image. The success of the project will be determined by the model's ability to achieve a high level of accuracy in identifying the correct shoe models from the images, providing a solid foundation for further advancements in image classification and consumer-driven shopping experiences. 
 
 For future enhancements, the trained model can be deployed as a user-facing application to enable a user-friendly experience. Consumers will be able to upload images and receive the corresponding shoe model names as the output. This application will streamline the process of identifying and purchasing specific shoe models, enhancing the shopping experience for consumers.  One thing we didn't try out was to compare the performance of our trained model with other pre-trained model like ResNet50 and Fastai models.
->>>>>>> 937fca7 (Updated code and report with new information)
 \section{References} 
 		\begin{enumerate}
 		\item Albawi, S., Mohammed, T. A., \& Al-Zawi, S. (2017). Understanding of a Convolutional Neural Network. 2017 International Conference on Engineering and Technology (ICET), 1–6. https://doi.org/10.1109/icengtechnol.2017.8308186  
