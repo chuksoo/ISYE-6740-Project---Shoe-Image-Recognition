@@ -56,6 +56,7 @@ The preprocessing steps we applied including resizing and normalization, to ensu
 \subsection{Model Architecture}
 The neural network is organized in layers meaning we take an image of a shoe, pass it through all the layers and get a prediction of what class the shoe belongs too. We used a custom CNN architecture with three convolutional blocks, followed by a classifier head with two dense layers. The convolutional layer consists of many filters giving us multiple feature maps for each filter.  The output of one convolutional layer is used as input into the next layer. The structure of the neural network is shown in \textbf{Fig. \ref{neural_network}} below:
 
+% Structure of a Neural Network
  \begin{figure}[h!]
 \centering
   \includegraphics[width=0.75\linewidth]{neural network.png}
@@ -72,6 +73,7 @@ The optimizer chosen for training the model is "adam," which is a widely used ad
 For the loss function, we selected "categorical\_crossentropy," as it is suitable for multi-class classification problems with one-hot encoded labels. It measures the difference between the predicted probability distribution and the true one-hot encoded labels.
 During training and testing, the model's performance is evaluated based on the accuracy metric, which calculates the percentage of correct predictions out of the total predictions made by the model since accuracy provides a clear and intuitive understanding of how well our model is performing on the task of classifying shoe images into different categories. A schematic of the convolutional neural network architecture is depicted in \textbf{Fig. \ref{schema}}, providing an overview of the layers and their connections within the model.
 
+% Schematic of the convolutional neural network
  \begin{figure}[h!]
  \centering
   \includegraphics[width=0.85\linewidth]{schema.png}
@@ -96,6 +98,7 @@ The plot of the loss and accuracy on the dataset is shown in Figure \ref{cnn_los
 
 \noindent The dropout value used in the model was set to 0.2, meaning 20\% of the output units from the layer were randomly dropped out during training. The schematic of the Convolutional Neural Network with dropout is depicted in Figure \ref{dropout_schema}. This updated model with data augmentation and dropout shows improved generalization capabilities and better performance on unseen data.
 
+% Plot of Loss and Accuracy on Training Dataset
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{training_valid_plot.png}
@@ -103,6 +106,7 @@ The plot of the loss and accuracy on the dataset is shown in Figure \ref{cnn_los
   \label{cnn_loss}
 \end{figure}
 
+% A Schematic of the Convolutional Neural Network with Dropout
  \begin{figure}[h!]
  \centering
   \includegraphics[width=0.85\linewidth]{dropout_schema.png}
@@ -110,7 +114,7 @@ The plot of the loss and accuracy on the dataset is shown in Figure \ref{cnn_los
   \label{dropout_schema}
 \end{figure}
 
-
+% The Plot of Loss and Accuracy on Training Dataset with Dropout
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{dropout_training_plot.png}
@@ -125,12 +129,10 @@ One possible reason for not observing a significant improvement is that the orig
 
 Both models, with and without dropout, show the expected behavior during training: as the number of epochs increases, the loss decreases, and accuracy increases. This behavior is typical in the learning process of neural networks.
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
+% Model Before Dropout
 \begin{table}[h!]
 \centering
 \resizebox{\textwidth}{!}{%
-% Model Before Dropout
 \begin{tabular}{lcccccccccc} \hline
 Epoch                         & 1             & 2            & 3            & 4           & 5            & 6            &7            & 8           & 9           &10 \\
 Loss                            & 0.8665 & 0.4879  & 0.3227  & 0.1810  & 0.0996  & 0.0690 & 0.0539 & 0.0450 & 0.0374 & 0.0371 \\
@@ -142,12 +144,10 @@ Validation accuracy   & 0.7995 & 0.8254  & 0.8298 & 0.8240 & 0.8125  & 0.8246 & 
 \label{tab:train_loss}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
+% Model After Dropout
 \begin{table}[h!]
 \centering
 \resizebox{\textwidth}{!}{%
-% Model After Dropout
 \begin{tabular}{lcccccccccc} \hline
 Epoch                          & 1             & 2            & 3           & 4           & 5            & 6            &7            & 8            & 9            &10 \\
 Loss                            & 0.8791   & 0.4889 & 0.3172 & 0.1843   & 0.1099  & 0.0819  & 0.0676 & 0.0611   & 0.0435  & 0.0421 \\
@@ -161,6 +161,7 @@ Validation accuracy   & 0.8035 & 0.8278 & 0.8366 & 0.8342 & 0.8395  & 0.8321 & 0
 
 To further re-fine the model, we increased the number of dense layers of the CNN model with two additional layers: one with 512 units and one with 256 units. Looking at Table 3, there is not much difference in the training accuracy nor validation accuracy between the refined model and the previous two models, and both accuracies seem to be close to the previous models. Moreover, the training and validation accuracy even is lower at around 81\%, and so serves as an indicator that adding additional layers to this model might be overfitting the data and might not be neccessary, causing the decreased accuracies.
  
+% A Schematic of the Convolutional Neural Network with Additional Layers
   \begin{figure}[h!]
  \centering
   \includegraphics[width=0.85\linewidth]{refined_schema.png}
@@ -168,6 +169,7 @@ To further re-fine the model, we increased the number of dense layers of the CNN
   \label{refined_schema}
 \end{figure}
  
+% The Plot of Loss and Accuracy on Training Dataset with Additional layers
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{refined_training_plot.png}
@@ -176,12 +178,10 @@ To further re-fine the model, we increased the number of dense layers of the CNN
 \end{figure}
 \FloatBarrier
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
+% Refined Model with Additional Layers
 \begin{table}[h!]
 \centering
 \resizebox{\textwidth}{!}{%
-% Refined Model with Additional Layers
 \begin{tabular}{lcccccccccc} \hline
 Epoch                         & 1             & 2            & 3           & 4           & 5            & 6           &7            & 8            & 9           &10 \\
 Loss                           & 0.8664 & 0.4981   & 0.3190   & 0.2033 & 0.1274 & 0.0955 & 0.0702 & 0.0586 & 0.0612 & 0.0487\\
