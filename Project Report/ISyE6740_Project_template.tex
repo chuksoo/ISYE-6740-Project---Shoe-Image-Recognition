@@ -189,6 +189,13 @@ Model After Dropout
 
 To further re-fine the model, we increased the number of dense layers of the CNN model with two additional layers: one with 512 units and one with 256 units. Looking at Table 3, there is not much difference in the training accuracy nor validation accuracy between the refined model and the previous two models, and both accuracies seem to be close to the previous models. Moreover, the training and validation accuracy even is lower at around 81\%, and so serves as an indicator that adding additional layers to this model might be overfitting the data and might not be neccessary, causing the decreased accuracies.
  
+  \begin{figure}[h!]
+ \centering
+  \includegraphics[width=0.85\linewidth]{refined_schema.png}
+  \caption{A Schematic of the Convolutional Neural Network with Additional Layers}
+  \label{refined_schema}
+\end{figure}
+ 
  \begin{figure}[h!]
  \centering
   \includegraphics[width=\linewidth]{Model with Additional Layers.png}
